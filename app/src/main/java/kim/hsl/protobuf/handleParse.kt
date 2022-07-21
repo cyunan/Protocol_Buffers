@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Environment
 import android.util.Log
 import com.example.tutorial.dependencies.AppDependenciesOuterClass
+import com.example.tutorial.dependencies.Config
 import java.io.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -22,8 +23,14 @@ fun parseDependencies() {
     val file = File(path)
     val fileInputStream = FileInputStream(file)
     val dependencies = AppDependenciesOuterClass.AppDependencies.parseFrom(fileInputStream)
-    saveLog(dependencies.toString(), "log")
-    Log.i(MainActivity.TAG, "pb反序列化 ${dependencies.libraryList}")
+    saveLog(dependencies.toString(), "dependencies")
+}
+fun parseBundleConfig() {
+    val path = "/storage/emulated/0/aab/BundleConfig.pb"
+    val file = File(path)
+    val fileInputStream = FileInputStream(file)
+    val dependencies = Config.BundleConfig.parseFrom(fileInputStream)
+    saveLog(dependencies.toString(), "BundleConfig")
 }
 
 fun saveLog(message: String, fileName: String) {

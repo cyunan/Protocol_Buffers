@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
         // 测试 Json 性能
         JsonTest().jsonTest()
         parseDependencies()
-
+        parseBundleConfig()
     }
 
     fun protobufTest(){
